@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CrownBot - Chat</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <!-- Google Fonts: Tomorrow -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tomorrow&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body class="chatpage">
+  <div class="bg-tech"></div>
+  <div class="container chat-container">
+    <h2 class="chat-title">CrownBot Chat</h2>
+    <div id="chatMessages" class="chat-window">
+      <p class="bot-message"><strong>Bot:</strong> Welcome to CrownBot! How can I assist you today?</p>
+    </div>
+    <div class="input-group chat-input-group">
+      <input type="text" id="chatInput" class="form-control" placeholder="Type your message...">
+      <div class="input-group-append">
+        <button id="sendButton" class="btn" type="button">Send</button>
+      </div>
+    </div>
+    <a href="{{ url_for('home') }}" class="back-home">Back to Home</a>
+  </div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
