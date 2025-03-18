@@ -1,0 +1,49 @@
+.homepage {
+    position: relative;
+    background: url('../images/background.webp') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e0e0e0;
+    overflow: hidden;
+}
+
+.content {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);  /* dark overlay for readability */
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.logo {
+    max-width: 200px;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #9bbce0;  /* soft blue */
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn-custom {
+    background-color: #4a90e2;  /* natural blue */
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-custom:hover {
+    background-color: #357ABD;
+}
