@@ -1,16 +1,33 @@
-{% extends "base.html" %}
-
-{% block title %}CrownBot - Home{% endblock %}
-
-{% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-{% endblock %}
-
-{% block body_class %}homepage{% endblock %}
-
-{% block content %}
-<img src="{{ url_for('static', filename='images/crownbot_logo.webp') }}" alt="CrownBot Logo" class="logo">
-<h1>CrownBot</h1>
-<p>CrownBot is your AI-powered assistant designed specifically for UNC Charlotte students. Get instant access to school information, academic support, and campus resources—without the hassle of long wait times or endless web searches.</p>
-<a href="{{ url_for('chat') }}" class="btn btn-custom">Enter Chat</a>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CrownBot - Home</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tomorrow&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='images/CROWNBOTLOGO.png') }}" width="60px" height="60px"></a>
+    </div>
+    <div class="navbar-links">
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+  <div class="homepage">
+    <div class="content">
+      <img src="{{ url_for('static', filename='images/CROWNBOTLOGO.png') }}" alt="CrownBot Logo" class="logo">
+      <h1>CrownBot</h1>
+      <p>CrownBot is your AI-powered assistant designed specifically for UNC Charlotte students. Get instant access to school information, academic support, and campus resources—without the hassle of long wait times or endless web searches.</p>
+      <a href="{{ url_for('chat') }}" class="btn btn-custom">Enter Chat</a>
+    </div>
+  </div>
+</body>
+</html>
