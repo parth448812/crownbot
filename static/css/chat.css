@@ -1,6 +1,6 @@
 .chatpage {
     position: relative;
-    background: url('../images/background.webp') no-repeat center center fixed;
+    background: url('../images/background_gold.webp') no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
     color: #e0e0e0;
@@ -66,22 +66,4 @@
     background-color: #357ABD;
     border-color: #357ABD;
     color: #fff;
-}
-
-.back-home {
-    display: block;
-    text-align: center;
-    margin-top: 1rem;
-    color: #fff;
-    background-color: #4a90e2;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.back-home:hover {
-    background-color: #357ABD;
-    color: #fff;
-    text-decoration: none;
 }

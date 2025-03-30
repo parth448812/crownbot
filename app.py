@@ -77,7 +77,7 @@ def login():
     return render_template('login.html')
 
 @app.route('/logout')
-@login_required
+@login_required 
 def logout():
     logout_user()
     return redirect(url_for('home'))
@@ -87,7 +87,7 @@ def home():
     return render_template('index.html')
 
 @app.route('/chat')
-@login_required
+# @login_required # this is not required because remember we have guest user access.
 def chat():
     return render_template('chat.html')
 

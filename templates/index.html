@@ -4,13 +4,18 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<!-- Google Fonts: Orbitron -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tomorrow&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block body_class %}homepage{% endblock %}
 
 {% block content %}
-<img src="{{ url_for('static', filename='images/crownbot_logo.webp') }}" alt="CrownBot Logo" class="logo">
+<img src="{{ url_for('static', filename='images/crownbot_logo_gold.webp') }}" alt="CrownBot Logo" class="logo">
 <h1>CrownBot</h1>
 <p>CrownBot is your AI-powered assistant designed specifically for UNC Charlotte students. Get instant access to school information, academic support, and campus resources—without the hassle of long wait times or endless web searches.</p>
 <a href="{{ url_for('chat') }}" class="btn btn-custom">Enter Chat</a>
+<a href="{{ url_for('login') }}" class="btn btn-custom login-btn">Login</a>
 {% endblock %}
