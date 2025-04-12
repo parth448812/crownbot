@@ -73,7 +73,7 @@ def signup():
             flash('Username already exists')
             return redirect(url_for('signup'))
 
-        hashed_password = generate_password_hash(password, method='sha256')
+        hashed_password = generate_password_hash(password, method='sha256')  # pbkdf2:sha256
         account_collection.insert_one({'username': username, 'password': hashed_password})
 
         flash('Signup successful! Please log in.')
@@ -148,7 +148,7 @@ def chat_api():
 
     memory = [{
         "role": "system",
-        "content": f"User is {student_info['FName']} {student_info['LName']}, Student ID: {student_info['StudentID']}, owes ${student_info['TuitionOwed']} in tuition."
+        "content": f"User is a college student at UNC Charlotte and will be asking questions either related to the college in general or specifically about themselves, where you will use the following personal information to provide accurate answers. If questions seem unrelated to the topic of UNC charlotte or about their problems on campus as a college student, let them know that is not your purpose as the CrownBot Chatbot. User is {student_info['FName']} {student_info['LName']}, Student ID: {student_info['StudentID']}, owes ${student_info['TuitionOwed']} in tuition. User taking the following courses {student_info['Courses']}"
     }]
 
     try:
@@ -172,6 +172,6 @@ def chat_api():
         return jsonify({'response': "Sorry, there was an error processing your query."}), 500
 
 if __name__ == '__main__':
-    import logging
-    logging.basicConfig(level=logging.DEBUG)
-    app.run(debug=True)
+    #import logging
+    #logging.basicConfig(level=logging.DEBUG)
+    app.run(debug=True) # use_reloader=False to prevent double execution of the script
