@@ -66,6 +66,12 @@ venv\Scripts\activate    (on Windows)
 source venv/bin/activate (on macOS/Linux)
 ```
 
+### Update .env file with actual OpenAI Secret Key: 
+
+```bash
+OPENAI_API_KEY='GET THIS FROM DANIEL'
+```
+
 ### Run the application: 
 
 ```bash
