@@ -128,7 +128,6 @@ def chat():
 
 # ---------------- Chat API ----------------
 @app.route('/api/chat', methods=['POST'])
-@login_required
 def chat_api():
     data = request.get_json()
     messages = data.get('messages', [])
@@ -138,18 +137,36 @@ def chat_api():
     user_message = messages[-1]['content'].lower()
 
     student_info = session.get('student_info')
-    if not session.get('student_verified', False) or not student_info:
-        return jsonify({'response': "Please log in using your student ID before chatting."})
+    if "student id" in user_message:
+        student_id_match = re.search(r'\b\d{9}\b', user_message)  # Assuming student ID is a 9-digit number
+        if student_id_match:
+            student_id = student_id_match.group()
+            student = students_collection.find_one({'StudentID': student_id}, {'_id': 0})
+            if student:
+                student['TuitionOwed'] = float(student['TuitionOwed'].to_decimal())
+                return jsonify({
+                    'response': f"Student Name: {student['FName']} {student['LName']}, Tuition Owed: ${student['TuitionOwed']}. Courses: {student['Courses']}"
+                })
+            else:
+                return jsonify({'response': "Student information not found."})
+        else:
+            return jsonify({'response': "Invalid or missing student ID."})
 
-    if "my name" in user_message:
-        return jsonify({'response': f"Your name is {student_info['FName']} {student_info['LName']}."})
-    if "tuition" in user_message:
-        return jsonify({'response': f"Your tuition balance is ${student_info['TuitionOwed']}."})
-
-    memory = [{
-        "role": "system",
-        "content": f"User is a college student at UNC Charlotte and will be asking questions either related to the college in general or specifically about themselves, where you will use the following personal information to provide accurate answers. If questions seem unrelated to the topic of UNC charlotte or about their problems on campus as a college student, let them know that is not your purpose as the CrownBot Chatbot. User is {student_info['FName']} {student_info['LName']}, Student ID: {student_info['StudentID']}, owes ${student_info['TuitionOwed']} in tuition. User taking the following courses {student_info['Courses']}"
-    }]
+    if session.get('student_verified', False) and student_info:
+        if "my name" in user_message:
+            return jsonify({'response': f"Your name is {student_info['FName']} {student_info['LName']}."})
+        if "tuition" in user_message:
+            return jsonify({'response': f"Your tuition balance is ${student_info['TuitionOwed']}."})
+        
+        memory = [{
+            "role": "system",
+            "content": f"User is a college student at UNC Charlotte and will be asking questions either related to the college in general or specifically about themselves, where you will use the following personal information to provide accurate answers. If questions seem unrelated to the topic of UNC charlotte or about their problems on campus as a college student, let them know that is not your purpose as the CrownBot Chatbot. User is {student_info['FName']} {student_info['LName']}, Student ID: {student_info['StudentID']}, owes ${student_info['TuitionOwed']} in tuition. User taking the following courses {student_info['Courses']}. DO NOT answer any questions not releated to UNC Charlotte nor should you provide any information about anything else other than UNC Charlotte. You are a chatbot and you are not a human. You are the CrownBot Chatbot."
+        }]
+    else:
+        memory = [{
+            "role": "system",
+            "content": "User is a college student at UNC Charlotte and will be asking questions either related to the college in general or specifically about themselves. If questions seem unrelated to the topic of UNC charlotte or about their problems on campus as a college student, let them know that is not your purpose as the CrownBot Chatbot. That last part is important. DO NOT answer any questions not releated to UNC Charlotte nor should you provide any information about anything else other than UNC Charlotte. You are a chatbot and you are not a human. You are the CrownBot Chatbot. If you see that a student provided a student ID, you will use that information to provide accurate answers. You are a chatbot and you are not a human. You are the CrownBot Chatbot."
+        }]
 
     try:
         full_messages = memory + [
@@ -158,12 +175,12 @@ def chat_api():
 
         print("\U0001F9E0 Sending to OpenAI:", full_messages)
 
-        response = openai.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=full_messages
+        response = openai.responses.create(
+            model="gpt-4o",
+            tools=[{"type": "web_search_preview"}],
+            input=full_messages
         )
-
-        bot_response = response.choices[0].message.content
+        bot_response = response.output_text
         return jsonify({'response': bot_response})
 
     except Exception as e:
@@ -172,6 +189,6 @@ def chat_api():
         return jsonify({'response': "Sorry, there was an error processing your query."}), 500
 
 if __name__ == '__main__':
-    #import logging
-    #logging.basicConfig(level=logging.DEBUG)
+    import logging
+    logging.basicConfig(level=logging.DEBUG)
     app.run(debug=True) # use_reloader=False to prevent double execution of the script
