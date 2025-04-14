@@ -73,7 +73,7 @@ def signup():
             flash('Username already exists')
             return redirect(url_for('signup'))
 
-        hashed_password = generate_password_hash(password, method='sha256')  # pbkdf2:sha256
+        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')  #pbkdf2:sha256
         account_collection.insert_one({'username': username, 'password': hashed_password})
 
         flash('Signup successful! Please log in.')
@@ -125,6 +125,10 @@ def home():
 @app.route('/chat')
 def chat():
     return render_template('chat.html')
+
+@app.route('/creators')
+def creators():
+    return render_template('creators.html')
 
 # ---------------- Chat API ----------------
 @app.route('/api/chat', methods=['POST'])

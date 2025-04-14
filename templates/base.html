@@ -13,10 +13,44 @@
     {% block head %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
+    <div class="header">
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/crownbot_logo_gold.webp') }}" alt="CrownBot Logo" class="logo">
+            </a>
+        </div>
+        <div class="header-buttons">
+          <div class="header-buttons">
+            {% if current_user.is_authenticated %}
+                <p class="welcome-text">Welcome, {{ session['student_info']['FName'] }} {{ session['student_info']['LName'] }}!</p>
+                <a href="{{ url_for('logout') }}" class="btn btn-custom login-btn">Log Out</a>
+            {% else %}
+                <a href="{{ url_for('signup') }}" class="btn btn-custom login-btn">Sign Up</a>
+                <a href="{{ url_for('login') }}" class="btn btn-custom login-btn">Login</a>
+            {% endif %}
+        </div>
+    </div>
+    </div>
     <div class="content">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="alert-container">
+            {% for message in messages %}
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
         {% block content %}{% endblock %}
     </div>
     <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     {% block scripts %}{% endblock %}
 </body>
 </html>

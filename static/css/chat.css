@@ -8,14 +8,19 @@
     overflow: hidden;
 }
 
+.content{
+    background: rgba(0, 0, 0, 0.6);  /* dark overlay for readability */
+    height: 100%;
+}
+
 .bg-tech {
-    display: none;  /* Hide the dark overlay */
+    display: none;
 }
 
 .chat-container {
     position: relative;
     z-index: 1;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 1rem;
 }
@@ -24,15 +29,15 @@
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #9bbce0;
+    color: var(--gold-color);
 }
 
 .chat-window {
     background-color: rgba(0, 0, 0, 0.8);
-    border: 1px solid #4a90e2;
+    border: 1px solid var(--hover-gold-color);
     border-radius: 5px;
     padding: 1rem;
-    height: 300px;
+    height: 550px;
     overflow-y: auto;
     margin-bottom: 1rem;
 }
@@ -42,28 +47,43 @@
 }
 
 .bot-message {
-    color: #4a90e2;
+    color: var(--gold-color);
 }
 
 .chat-input-group .form-control {
     background-color: #222;
-    border: 1px solid #4a90e2;
+    border: 1px solid var(--gold-color);
     color: #fff;
 }
 
 .chat-input-group .form-control:focus {
-    border-color: #4a90e2;
-    box-shadow: 0 0 5px #4a90e2;
+    border-color: var(--gold-color);
+    box-shadow: 0 0 5px var(--gold-color);
 }
 
 .input-group-append .btn {
-    background-color: #4a90e2;
-    border: 1px solid #4a90e2;
+    background-color: var(--gold-color);
+    border: 1px solid var(--gold-color);
     color: #fff;
 }
 
 .input-group-append .btn:hover {
-    background-color: #357ABD;
-    border-color: #357ABD;
+    background-color: var(--hover-gold-color);
+    border-color: var(--hover-gold-color);
     color: #fff;
+}
+
+.btn-custom {
+    background-color: var(--gold-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-custom:hover {
+    background-color: var(--hover-gold-color);
 }

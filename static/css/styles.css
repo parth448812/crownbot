@@ -1,8 +1,12 @@
+:root {
+  --green-color: #005035;
+  --gold-color: #b9975b;
+  --hover-gold-color: #9c7f4d;
+}
 /* Global Styles */
 body {
     margin: 0;
     padding: 0;
-    /* font-family: 'Orbitron', sans-serif; */
     font-family: "Tomorrow", sans-serif;
   }
   
@@ -34,28 +38,86 @@ body {
   h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: #9bbce0;  /* soft blue */
+    color: var(--gold-color);
   }
   
   p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
   }
-  
-  .btn-custom {
-    background-color: #4a90e2; /* #d5b80f;  natural blue */
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    color: #ffffff;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-  }
-  
+  .header {
+    width: 100%;
+    height: 75px;
+    padding: 1rem 2rem;
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+.header .logo img {
+  margin-top: 35px;
+  width: 55px;
+  height: 55px;
+}
+
+.header .logo img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+footer {
+  width: 100%;
+  height: 75px;
+  padding: 1rem 2rem;
+  background-color: #1a1a1a;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  align-items: center;  /* Center content vertically */
+}
+
+footer p, .footer-link {
+  margin: 0 10px;  /* Ensure no space between the elements */
+}
+
+.footer-link {
+  color: var(--gold-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  color: var(--hover-gold-color);
+}
+
   .btn-custom:hover {
-    background-color: #357ABD;
+    background-color: var(--hover-gold-color);
   }
+
+  .header-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;     /* center left to right */
+    justify-content: center;
+  }
+
+  .welcome-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    width: auto;
+}
+
   
   /* Chat Page Styles */
   .chatpage {
@@ -80,7 +142,7 @@ body {
     animation: techMove 30s linear infinite; /* remove maybe */
   }
   
-  
+
   @keyframes fadeOverlay {
     from {
       opacity: 0.7;
@@ -90,69 +152,84 @@ body {
     }
   }
   
-  
+
   .chat-container {
     position: relative;
     z-index: 1;
     max-width: 600px;
     margin: 0 auto;
     padding: 1rem;
+    
   }
   
   .chat-title {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #9bbce0;
+    color: var(--gold-color);
   }
   
   .chat-window {
     background-color: rgba(0, 0, 0, 0.8);
-    border: 1px solid #4a90e2;
+    border: 1px solid var(--gold-color);
     border-radius: 5px;
     padding: 1rem;
     height: 300px;
     overflow-y: auto;
     margin-bottom: 1rem;
+    text-align: left;
+    scroll-behavior:smooth;
   }
   
   .chat-window p {
     margin: 0.5rem 0;
+    text-align: left;
+  }
+
+  .chat-window::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .chat-window::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+  }
+  
+  .chat-window::-webkit-scrollbar-thumb {
+    background-color: var(--gold-color);
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+  }
+  
+  .chat-window::-webkit-scrollbar-thumb:hover {
+    background-color: var(--hover-gold-color);
   }
   
   .bot-message {
-    color: #4a90e2;
+    color: var(--gold-color);
   }
   
   .chat-input-group .form-control {
     background-color: #222;
-    border: 1px solid #4a90e2;
+    border: 1px solid var(--hover-gold-color);
     color: #fff;
   }
   
   .chat-input-group .form-control:focus {
-    border-color: #4a90e2;
-    box-shadow: 0 0 5px #4a90e2;
+    border-color: var(--gold-color);
+    box-shadow: 0 0 5px var(--gold-color);
   }
   
   .input-group-append .btn {
-    background-color: #4a90e2;
-    border: 1px solid #4a90e2;
+    background-color: var(--gold-color);
+    border: 1px solid var(--gold-color);
     color: #fff;
   }
   
   .input-group-append .btn:hover {
-    background-color: #357ABD;
-    border-color: #357ABD;
+    background-color: var(--hover-gold-color);;
+    border-color: var(--hover-gold-color);;
     color: #fff;
-  }
-  
-  .back-home {
-    display: block;
-    text-align: center;
-    margin-top: 1rem;
-    color: #4a90e2;
-    text-decoration: none;
   }
   
   .tomorrow-regular {
@@ -190,7 +267,7 @@ body {
   }
   
   .auth-btn {
-    background-color: #4a90e2;
+    background-color: var(--hover-gold-color);
     border: none;
     padding: 0.75rem 1.5rem;
     font-size: 1.2rem;
@@ -200,7 +277,7 @@ body {
   }
 
   .auth-btn:hover {
-    background-color: #357ABD;
+    background-color: var(--gold-color);
   }
 
   .auth-footer {
@@ -213,12 +290,66 @@ body {
   }
   
   .switch-auth a {
-    color: #ffd700;
+    color: var(--gold-color);
     font-weight: bold;
   }
-  
+
   .back-home {
     display: block;
-    margin-top: 10px;
-    color: #ddd;
+    text-align: center;
+    margin: 10px auto 0 auto;
+    color: var(--gold-color);;
+    text-decoration: none;
+    width: 20%;
   }
+  
+  .back-home:hover {
+    display: block;
+    margin-top: 10px;
+    color: var(--hover-gold-color);
+  }
+
+  .here{
+    color: var(--gold-color);
+  }
+  .here:hover{
+    color: var(--hover-gold-color);
+  }
+
+  .creator-box {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    flex-grow: 1;
+}
+
+.creator-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.creator-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.creator-description {
+    font-size: .9rem;
+    color: white;
+}
+
+.full-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 70px;
+}

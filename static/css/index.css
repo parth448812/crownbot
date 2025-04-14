@@ -10,12 +10,6 @@
     overflow: hidden;
 }
 
-.content {
-    text-align: center;
-    background: rgba(0, 0, 0, 0.6);  /* dark overlay for readability */
-    padding: 2rem;
-    border-radius: 10px;
-}
 
 .logo {
     max-width: 200px;
@@ -25,7 +19,7 @@
 h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: #9bbce0;  /* soft blue */
+    color: var(--gold-color);
 }
 
 p {
@@ -34,9 +28,9 @@ p {
 }
 
 .btn-custom {
-    background-color: #4a90e2;  /* natural blue */
+    background-color: var(--gold-color);
     border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem;
     font-size: 1.2rem;
     border-radius: 5px;
     color: #ffffff;
@@ -45,5 +39,5 @@ p {
 }
 
 .btn-custom:hover {
-    background-color: #357ABD;
+    background-color: var(--hover-gold-color);
 }

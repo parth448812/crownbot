@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}CrownBot - Chat{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+{% endblock %}
+
+{% block body_class %}chatpage{% endblock %}
+
+{% block content %}
+<div class="full-page container d-flex flex-column align-items-center">
+    <h2 class="text-center mt-5 mb-4">Meet Our Creators</h2>
+
+    <div class="row justify-content-center mb-4 w-100">
+        <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center mb-4">
+            <div class="creator-box">
+                <img src="/static/images/creator.png" alt="Santiago Dubon Sanchez" class="creator-img">
+                <h5 class="creator-title text-center">Santiago Dubon Sanchez</h5>
+                <p class="creator-description text-center">Santiago worked on functionality and database of the project.</p> <!-- Keep is super simple for sizing-->
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center mb-4">
+            <div class="creator-box">
+                <img src="/static/images/creator.png" alt="Parth Patel" class="creator-img">
+                <h5 class="creator-title text-center">Parth Patel</h5>
+                <p class="creator-description text-center">Parth worked on frontend and database of the project.</p> <!-- Keep is super simple for sizing-->
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center mb-4">
+            <div class="creator-box">
+                <img src="/static/images/creator.png" alt="Daniel Floyd" class="creator-img">
+                <h5 class="creator-title text-center">Daniel Floyd</h5>
+                <p class="creator-description text-center">Daniel worked on the database and functionality of the project.</p> <!-- Keep is super simple for sizing-->
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center w-100 flex-wrap">
+        <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center mb-4">
+            <div class="creator-box">
+                <img src="/static/images/creator.png" alt="Mitchell Nguyen" class="creator-img">
+                <h5 class="creator-title text-center">Mitchell Nguyen</h5>
+                <p class="creator-description text-center">Mitchell worked on the frontend and functionality of the project.</p> <!-- Keep is super simple for sizing-->
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center mb-4">
+            <div class="creator-box">
+                <img src="/static/images/creator.png" alt="Kshitij Natu" class="creator-img">
+                <h5 class="creator-title text-center">Kshitij Natu</h5>
+                <p class="creator-description text-center">Kshitij worked on frontend and database of the project.</p> <!-- Keep is super simple for sizing-->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% include "footer.html" %}

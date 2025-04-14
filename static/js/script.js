@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const sendButton = document.getElementById('sendButton');
   const chatMessages = document.getElementById('chatMessages');
   let chatHistory = [];
-
+  
+  
   async function sendMessage() {
     const message = chatInput.value.trim();
     console.log('message:', message);
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Append temporary bot response to chat window
       const botMessage = document.createElement('p');
       botMessage.classList.add('bot-message');
-      botMessage.innerHTML = `<strong>Bot:</strong> Processing your query...`;
+      botMessage.innerHTML = `<strong>CrownBot:</strong> Processing your query...`;
       chatMessages.appendChild(botMessage);
       
       console.log('chatHistory:', chatMessages);
@@ -44,15 +45,15 @@ document.addEventListener('DOMContentLoaded', function() {
           const data = await response.json();
           console.log('data:', data);
           console.log('data.response:', data.response);
-          botMessage.innerHTML = `<strong>Bot:</strong> ${data.response}`;
+          botMessage.innerHTML = `<strong>CrownBot:</strong> ${data.response}`;
           // Append bot response to chat history
           chatHistory.push({ role: 'bot', content: data.response });
           console.log('chatHistory:', chatHistory);
         } else {
-          botMessage.innerHTML = `<strong>Bot:</strong> Sorry, there was an error processing your query.`;
+          botMessage.innerHTML = `<strong>CrownBot:</strong> Sorry, there was an error processing your query.`;
         }
       } catch (error) {
-        botMessage.innerHTML = `<strong>Bot:</strong> Sorry, there was an error processing your query.`;
+        botMessage.innerHTML = `<strong>CrownBot:</strong> Sorry, there was an error processing your query.`;
       }
 
       chatMessages.scrollTop = chatMessages.scrollHeight;
